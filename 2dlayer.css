@@ -1,8 +1,8 @@
 
 .layer-wrapper {
   position: relative;
-  margin: 20px auto;
-  width: 600px;
+  margin: 30px auto;
+  width: 650px;
 }
 
 .layer {
@@ -40,6 +40,11 @@
 
 .layer-content header {
   padding-bottom: 20px;
+  -webkit-transition: background-color ease-out 0.25s;
+  -moz-transition: background-color ease-out 0.25s;
+  -ms-transition: background-color ease-out 0.25s;
+  -o-transition: background-color ease-out 0.25s;
+  transition: background-color ease-out 0.25s;
 }
 
 .active article, .active .description {
@@ -59,11 +64,6 @@
 .layer:hover header {
   background-color: white;
   cursor: pointer;
-  -webkit-transition: background-color ease-out 0.25s;
-  -moz-transition: background-color ease-out 0.25s;
-  -ms-transition: background-color ease-out 0.25s;
-  -o-transition: background-color ease-out 0.25s;
-  transition: background-color ease-out 0.25s;
 }
 
 #layer1 {
