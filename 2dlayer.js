@@ -18,8 +18,11 @@
     el.style.transitionDuration = '1.5s';
     setTimeout(function(){
       removeClass(el, 'active');
+      addClass(el.parentNode, 'visited');
     }, 750);
     var close = document.querySelector('#' + el.parentNode.id + ' span.close');
+    var done = document.querySelector('#' + el.parentNode.id + ' span.done');
+    show(done, 500);
     hide(close, 500);
   }
 
@@ -27,11 +30,15 @@
     if(this.tagName.toLowerCase() === 'span'){
       var el             = this.parentNode;
       el.style.maxHeight = 50 + 'px';
-      //el.style.transitionDuration = '2.5s';
+      el.style.transitionDuration = '1.5s';
       setTimeout(function(){
         removeClass(el, 'active');
-      }, 1700);
+        addClass(el, 'visited');
+        addClass(el.parentNode, 'visited');
+      }, 750);
       var close = document.querySelector('#' + el.parentNode.id + ' span.close');
+      var done = document.querySelector('#' + el.parentNode.id + ' span.done');
+      show(done, 500);
       hide(close, 500);
     }
   }
@@ -68,6 +75,7 @@
 
       if(lastChild.offsetTop !== currentEl.offsetTop){
         addClass(content, 'active');
+        removeClass(content.parentNode, 'visited');
         setTimeout(function(){
           var aDiv = document.getElementsByClassName('active')[0];
           aDiv.style.transitionDuration  = '2.5s';
@@ -81,6 +89,7 @@
       lastChild.style.top = currentEl.offsetTop + 'px';
       addClass(lastChild, 'top-layer');
       addClass(content, 'active');
+      removeClass(content.parentNode, 'visited');
       var aDiv = document.getElementsByClassName('active')[0];
       aDiv.style.transitionDuration  = '2.5s';
       setTimeout(function(){
