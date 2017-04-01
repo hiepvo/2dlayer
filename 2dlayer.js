@@ -15,9 +15,10 @@
   // restore height of element and remove class 'active'
   function closeSlide(el){
     el.style.maxHeight = 50 + 'px';
+    el.style.transitionDuration = '1.5s';
     setTimeout(function(){
       removeClass(el, 'active');
-    }, 1700);
+    }, 750);
     var close = document.querySelector('#' + el.parentNode.id + ' span.close');
     hide(close, 500);
   }
@@ -26,9 +27,10 @@
     if(this.tagName.toLowerCase() === 'span'){
       var el             = this.parentNode;
       el.style.maxHeight = 50 + 'px';
+      //el.style.transitionDuration = '2.5s';
       setTimeout(function(){
         removeClass(el, 'active');
-      }, 1100);
+      }, 1700);
       var close = document.querySelector('#' + el.parentNode.id + ' span.close');
       hide(close, 500);
     }
@@ -62,14 +64,16 @@
         currentEl.style.top = lastChild.offsetTop + 'px';
         lastChild.style.top = currentEl.offsetTop + 'px';
         addClass(lastChild, 'top-layer');
-      }, 1000);
+      }, 950);
 
       if(lastChild.offsetTop !== currentEl.offsetTop){
+        addClass(content, 'active');
         setTimeout(function(){
-          addClass(content, 'active');
+          var aDiv = document.getElementsByClassName('active')[0];
+          aDiv.style.transitionDuration  = '2.5s';
           content.style.maxHeight = maxHeight + 'px';
           inProgress              = false;
-        }, 1800);
+        }, 1500);
       }
     }
     else{
@@ -77,10 +81,12 @@
       lastChild.style.top = currentEl.offsetTop + 'px';
       addClass(lastChild, 'top-layer');
       addClass(content, 'active');
+      var aDiv = document.getElementsByClassName('active')[0];
+      aDiv.style.transitionDuration  = '2.5s';
       setTimeout(function(){
         content.style.maxHeight = maxHeight + 'px';
         inProgress              = false;
-      }, 800);
+      }, 750);
     }
     setTimeout(function(){
       removeClass(currentEl, 'on-top');

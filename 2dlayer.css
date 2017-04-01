@@ -43,12 +43,10 @@ html {
 
 .active {
   background-color: white;
-
-  -webkit-transition: max-height 2500ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
-  -moz-transition: max-height 2500ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
-  -o-transition: max-height 2500ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
-  transition: max-height 2500ms cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
-
+  -webkit-transition: max-height cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -moz-transition: max-height cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -o-transition: max-height cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  transition: max-height cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
 }
 
 .layer-content header {
@@ -117,10 +115,10 @@ html {
   background-image: url("images/ic_close.png");
   background-size: cover;
   cursor: pointer;
-  -webkit-transition: opacity .5s cubic-bezier(0.470, 0.000, 0.745, 0.715) 0.25s;
-  -moz-transition: opacity .5s cubic-bezier(0.470, 0.000, 0.745, 0.715) 0.25s;
-  -o-transition: opacity .5s cubic-bezier(0.470, 0.000, 0.745, 0.715) 0.25s;
-  transition: opacity .5s cubic-bezier(0.470, 0.000, 0.745, 0.715) 0.25s; /* easeInSine */
+  -webkit-transition: opacity .5s cubic-bezier(0.470, 0.000, 0.745, 0.715) 0.75s;
+  -moz-transition: opacity .5s cubic-bezier(0.470, 0.000, 0.745, 0.715) 0.75s;
+  -o-transition: opacity .5s cubic-bezier(0.470, 0.000, 0.745, 0.715) 0.75s;
+  transition: opacity .5s cubic-bezier(0.470, 0.000, 0.745, 0.715) 0.75s; /* easeInSine */
   z-index: 1;
 }
 
