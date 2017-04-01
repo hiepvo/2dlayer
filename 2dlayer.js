@@ -17,7 +17,7 @@
     el.style.maxHeight = 50 + 'px';
     setTimeout(function(){
       removeClass(el, 'active');
-    }, 1100);
+    }, 1700);
     var close = document.querySelector('#' + el.parentNode.id + ' span.close');
     hide(close, 500);
   }
@@ -69,7 +69,7 @@
           addClass(content, 'active');
           content.style.maxHeight = maxHeight + 'px';
           inProgress              = false;
-        }, 2000);
+        }, 1800);
       }
     }
     else{
@@ -80,7 +80,7 @@
       setTimeout(function(){
         content.style.maxHeight = maxHeight + 'px';
         inProgress              = false;
-      }, 1000);
+      }, 800);
     }
     setTimeout(function(){
       removeClass(currentEl, 'on-top');
