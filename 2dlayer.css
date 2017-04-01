@@ -46,6 +46,9 @@ html {
   background-color: #D7E4E2;
   border-color: #D9DEDD;
 }
+.visited header {
+  color: #A7AEAC;
+}
 
 .done {
   width: 25px;
