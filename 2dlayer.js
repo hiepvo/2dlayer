@@ -16,13 +16,14 @@
   function closeSlide(el){
     el.style.maxHeight = 50 + 'px';
     el.style.transitionDuration = '1.5s';
+    var close = document.querySelector('#' + el.parentNode.id + ' span.close');
+    var done = document.querySelector('#' + el.parentNode.id + ' span.done');
     setTimeout(function(){
       removeClass(el, 'active');
       addClass(el.parentNode, 'visited');
+      show(done, 500);
     }, 750);
-    var close = document.querySelector('#' + el.parentNode.id + ' span.close');
-    var done = document.querySelector('#' + el.parentNode.id + ' span.done');
-    show(done, 500);
+
     hide(close, 500);
   }
 
@@ -33,7 +34,6 @@
       el.style.transitionDuration = '1.5s';
       setTimeout(function(){
         removeClass(el, 'active');
-        addClass(el, 'visited');
         addClass(el.parentNode, 'visited');
       }, 750);
       var close = document.querySelector('#' + el.parentNode.id + ' span.close');
@@ -63,7 +63,8 @@
     }
     var lastActive = document.querySelector('#' + lastChild.id + ' div');
     var content    = document.querySelector('#' + currentEl.id + ' div');
-    var close      = document.querySelector('#' + currentEl.id + ' div .close');
+    var close      = document.querySelector('#' + currentEl.id + ' .close');
+    var done      = document.querySelector('#' + currentEl.id + ' .done');
     removeClass(close, 'hide');
     if(lastActive.className.indexOf('active') !== -1){
       closeSlide(lastActive);
@@ -76,6 +77,7 @@
       if(lastChild.offsetTop !== currentEl.offsetTop){
         addClass(content, 'active');
         removeClass(content.parentNode, 'visited');
+        hide(done, 0);
         setTimeout(function(){
           var aDiv = document.getElementsByClassName('active')[0];
           aDiv.style.transitionDuration  = '2.5s';
@@ -90,6 +92,7 @@
       addClass(lastChild, 'top-layer');
       addClass(content, 'active');
       removeClass(content.parentNode, 'visited');
+      hide(done, 0);
       var aDiv = document.getElementsByClassName('active')[0];
       aDiv.style.transitionDuration  = '2.5s';
       setTimeout(function(){

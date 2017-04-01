@@ -134,7 +134,7 @@ html {
   z-index: 1;
 }
 
-.close:hover {
+.close:hover{
   opacity: 0.5;
 }
 
