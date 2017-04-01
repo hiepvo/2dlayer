@@ -35,12 +35,6 @@ html {
   outline: none;
 }
 
-.layer header {
-  text-transform: uppercase;
-  font-weight: bold;
-  padding-left: 15px;
-}
-
 .active {
   background-color: white;
   -webkit-transition: max-height cubic-bezier(0.190, 1.000, 0.220, 1.000);
@@ -50,12 +44,14 @@ html {
 }
 
 .layer-content header {
+  text-transform: uppercase;
+  font-weight: bold;
   padding: 0 3rem 2rem 3rem;
-
-  -webkit-transition: background-color .5s cubic-bezier(0.470, 0.000, 0.745, 0.715);
-  -moz-transition: background-color .5s cubic-bezier(0.470, 0.000, 0.745, 0.715);
-  -o-transition: background-color .5s cubic-bezier(0.470, 0.000, 0.745, 0.715);
-  transition: background-color .5s cubic-bezier(0.470, 0.000, 0.745, 0.715); /* easeInSine */
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -ms-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
 }
 
 .active article, .active .description {
