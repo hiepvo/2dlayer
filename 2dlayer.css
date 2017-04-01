@@ -1,8 +1,18 @@
+html {
+  font-family: 'Roboto', Arial;
+  font-size: 62.5%;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
 
 .layer-wrapper {
   position: relative;
-  margin: 30px auto;
-  width: 650px;
+  margin: 3rem auto;
+  width: 65rem;
+  font-size: 1.6rem;
+  color: #2e8275;
 }
 
 .layer {
@@ -13,14 +23,14 @@
   background-color: #A0EDDF;
   width: 600px;
   border-radius: 2px;
-  -webkit-transition: top ease-out 0.5s;
-  -moz-transition: top ease-out 0.5s;
-  -ms-transition: top ease-out 0.5s;
-  -o-transition: top ease-out 0.5s;
-  transition: top ease-out 0.5s;
+
+  -webkit-transition: top .75s cubic-bezier(0.470, 0.000, 0.745, 0.715);
+  -moz-transition: top .75s cubic-bezier(0.470, 0.000, 0.745, 0.715);
+  -o-transition: top .75s cubic-bezier(0.470, 0.000, 0.745, 0.715);
+  transition: top .75s cubic-bezier(0.470, 0.000, 0.745, 0.715); /* easeInSine */
+
   outline: none;
 }
-
 
 .layer header {
   text-transform: uppercase;
@@ -31,27 +41,30 @@
 .active {
   background-color: white;
 
-  -webkit-transition: max-height ease-out 0.5s;
-  -moz-transition: max-height ease-out 0.5s;
-  -ms-transition: max-height ease-out 0.5s;
-  -o-transition: max-height ease-out 0.5s;
-  transition: max-height ease-out 0.5s;
+  -webkit-transition: max-height 1000ms cubic-bezier(0.470, 0.000, 0.745, 0.715);
+  -moz-transition: max-height 1000ms cubic-bezier(0.470, 0.000, 0.745, 0.715);
+  -o-transition: max-height 1000ms cubic-bezier(0.470, 0.000, 0.745, 0.715);
+  transition: max-height 1000ms cubic-bezier(0.470, 0.000, 0.745, 0.715); /* easeInSine */
+
 }
 
 .layer-content header {
-  padding-bottom: 20px;
-  -webkit-transition: background-color ease-out 0.25s;
-  -moz-transition: background-color ease-out 0.25s;
-  -ms-transition: background-color ease-out 0.25s;
-  -o-transition: background-color ease-out 0.25s;
-  transition: background-color ease-out 0.25s;
+  padding: 0 3rem 2rem 3rem;
+  -webkit-transition: background-color .5s cubic-bezier(0.470, 0.000, 0.745, 0.715);
+  -moz-transition: background-color .5s cubic-bezier(0.470, 0.000, 0.745, 0.715);
+  -o-transition: background-color .5s cubic-bezier(0.470, 0.000, 0.745, 0.715);
+  transition: background-color .5s cubic-bezier(0.470, 0.000, 0.745, 0.715); /* easeInSine */
 }
 
 .active article, .active .description {
   white-space: normal;
   line-height: 20px;
   text-align: left;
-  padding: 0px 15px 15px 15px;
+  padding: 0px 3rem 3rem 3rem;
+}
+
+.active .description {
+  padding: 0 3rem 0 3rem;
 }
 
 .active header {
@@ -94,27 +107,29 @@
   width: 25px;
   height: 25px;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 8px;
+  right: 8px;
   opacity: 0;
   background-image: url("images/ic_close.png");
   background-size: cover;
   cursor: pointer;
-  -webkit-transition: opacity 0.5s;
-  -moz-transition: opacity 0.5s;
-  -ms-transition: opacity 0.5s;
-  -o-transition: opacity 0.5s;
-  transition: opacity 0.5s;
+  -webkit-transition: opacity .5s cubic-bezier(0.470, 0.000, 0.745, 0.715) 0.25s;
+  -moz-transition: opacity .5s cubic-bezier(0.470, 0.000, 0.745, 0.715) 0.25s;
+  -o-transition: opacity .5s cubic-bezier(0.470, 0.000, 0.745, 0.715) 0.25s;
+  transition: opacity .5s cubic-bezier(0.470, 0.000, 0.745, 0.715) 0.25s; /* easeInSine */
   z-index: 1;
 }
 
-.close:hover{
+.close:hover {
   opacity: 0.5;
 }
-
 
 .hide {
   position: absolute !important;
   top: -9999px !important;
   left: -9999px !important;
+}
+
+.on-top {
+  z-index: 101;
 }

@@ -2,12 +2,12 @@
  * Created by hiepvo on 3/29/17.
  */
 (function(){
-  var init = {};
-
+  var init        = {};
+  var maxHeight   = 1200;
   var links       = document.querySelectorAll('.layer header');
   var close_links = document.querySelectorAll('.layer .close');
 
-  for(var i = 0; i < links.length; i++){
+  for(var i = 0; i < close_links.length; i++){
     links[i].addEventListener('click', openSlide, false);
     close_links[i].addEventListener('click', closeBtn, false);
   }
@@ -17,7 +17,7 @@
     el.style.maxHeight = 50 + 'px';
     setTimeout(function(){
       removeClass(el, 'active');
-    }, 500);
+    }, 1100);
     var close = document.querySelector('#' + el.parentNode.id + ' span.close');
     hide(close, 500);
   }
@@ -28,14 +28,18 @@
       el.style.maxHeight = 50 + 'px';
       setTimeout(function(){
         removeClass(el, 'active');
-      }, 500);
+      }, 1100);
       var close = document.querySelector('#' + el.parentNode.id + ' span.close');
       hide(close, 500);
     }
   }
 
-  var temp = null;
+  var temp       = null;
+  var inProgress = false;
+
   function openSlide(e){
+    if(inProgress)return;
+    inProgress    = true;
     var currentEl = this.parentNode.parentNode;
     var parent    = this.parentNode.parentNode.parentNode;
     var lastChild = parent.lastElementChild;
@@ -45,44 +49,91 @@
     else{
       lastChild = temp;
     }
-
+    if(currentEl.className.indexOf('on-top') === -1){
+      addClass(currentEl, 'on-top');
+    }
     var lastActive = document.querySelector('#' + lastChild.id + ' div');
     var content    = document.querySelector('#' + currentEl.id + ' div');
     var close      = document.querySelector('#' + currentEl.id + ' div .close');
     removeClass(close, 'hide');
-
-    //close.addEventListener('click', closeSlide, false);
     if(lastActive.className.indexOf('active') !== -1){
       closeSlide(lastActive);
       setTimeout(function(){
         currentEl.style.top = lastChild.offsetTop + 'px';
         lastChild.style.top = currentEl.offsetTop + 'px';
-      }, 600);
+        addClass(lastChild, 'top-layer');
+      }, 1000);
 
       if(lastChild.offsetTop !== currentEl.offsetTop){
         setTimeout(function(){
           addClass(content, 'active');
-          content.style.maxHeight = 1200 + 'px';
-        }, 1100);
+          content.style.maxHeight = maxHeight + 'px';
+          inProgress              = false;
+        }, 2000);
       }
     }
     else{
       currentEl.style.top = lastChild.offsetTop + 'px';
       lastChild.style.top = currentEl.offsetTop + 'px';
+      addClass(lastChild, 'top-layer');
+      addClass(content, 'active');
       setTimeout(function(){
-        addClass(content, 'active');
-        content.style.maxHeight = 1200 + 'px';
-      }, 650);
+        content.style.maxHeight = maxHeight + 'px';
+        inProgress              = false;
+      }, 1000);
     }
+    setTimeout(function(){
+      removeClass(currentEl, 'on-top');
+    }, 2000);
     temp = currentEl;
   }
 
-//place element in specific cords
-  function placeEl(el, x_pos, y_pos){
-    el.style.left = x_pos - el.offsetWidth / 3 + 'px';
-    el.style.top  = y_pos + 'px';
+  var didScroll = false;
+
+  window.onscroll = moveEl;
+  function moveEl(){
+    didScroll = true;
   }
 
+  var arr = [];
+  setInterval(function(){
+    if(didScroll){
+      didScroll  = false;
+      var layers = document.querySelectorAll('[id^=layer]');
+
+      var i      = 0;
+      for(i; i < layers.length; i++){
+        if(layers[i].style.top)
+        if(layers[i].className.indexOf('active') === -1){
+          if(layers[i].style.top === '0px'){
+            //alert(activeLayer.clientHeight)
+            if(isScrolledIntoView(layers[i]) === false){
+              layers[i].style.top = 180 + 'px';
+            }
+          }
+        }
+      }
+    }
+  }, 100);
+
+  function getDocHeight(){
+    var doc = document;
+    return Math.max(
+        doc.body.scrollHeight, doc.documentElement.scrollHeight,
+        doc.body.offsetHeight, doc.documentElement.offsetHeight,
+        doc.body.clientHeight, doc.documentElement.clientHeight
+    );
+  }
+
+  function isScrolledIntoView(el){
+    var elemTop    = el.getBoundingClientRect().top;
+    var elemBottom = el.getBoundingClientRect().bottom;
+
+    var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+    return isVisible;
+  }
+
+  /********* helper ***********/
   function hide(el, time){
     setTimeout(function(){
       addClass(el, 'hide');
