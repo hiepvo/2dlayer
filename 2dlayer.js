@@ -3,7 +3,7 @@
  */
 (function(){
   var init        = {};
-  var maxHeight   = 1200;
+  var maxHeight   = 720;
   var links       = document.querySelectorAll('.layer header');
   var close_links = document.querySelectorAll('.layer .close');
 
@@ -111,44 +111,6 @@
   window.onscroll = moveEl;
   function moveEl(){
     didScroll = true;
-  }
-
-  var arr = [];
-  setInterval(function(){
-    if(didScroll){
-      didScroll  = false;
-      var layers = document.querySelectorAll('[id^=layer]');
-
-      var i      = 0;
-      for(i; i < layers.length; i++){
-        if(layers[i].style.top)
-        if(layers[i].className.indexOf('active') === -1){
-          if(layers[i].style.top === '0px'){
-            //alert(activeLayer.clientHeight)
-            if(isScrolledIntoView(layers[i]) === false){
-              layers[i].style.top = 180 + 'px';
-            }
-          }
-        }
-      }
-    }
-  }, 100);
-
-  function getDocHeight(){
-    var doc = document;
-    return Math.max(
-        doc.body.scrollHeight, doc.documentElement.scrollHeight,
-        doc.body.offsetHeight, doc.documentElement.offsetHeight,
-        doc.body.clientHeight, doc.documentElement.clientHeight
-    );
-  }
-
-  function isScrolledIntoView(el){
-    var elemTop    = el.getBoundingClientRect().top;
-    var elemBottom = el.getBoundingClientRect().bottom;
-
-    var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
-    return isVisible;
   }
 
   /********* helper ***********/
