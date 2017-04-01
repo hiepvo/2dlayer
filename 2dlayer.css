@@ -12,6 +12,9 @@ html {
   margin: 3rem auto;
   width: 65rem;
   font-size: 1.6rem;
+}
+
+.layer-wrapper div {
   color: #2e8275;
 }
 
@@ -24,11 +27,11 @@ html {
   width: 600px;
   border-radius: 2px;
 
-  -webkit-transition: top .75s cubic-bezier(0.470, 0.000, 0.745, 0.715);
-  -moz-transition: top .75s cubic-bezier(0.470, 0.000, 0.745, 0.715);
-  -o-transition: top .75s cubic-bezier(0.470, 0.000, 0.745, 0.715);
-  transition: top .75s cubic-bezier(0.470, 0.000, 0.745, 0.715); /* easeInSine */
-
+  -webkit-transition: top ease-out 0.5s;
+  -moz-transition: top ease-out 0.5s;
+  -ms-transition: top ease-out 0.5s;
+  -o-transition: top ease-out 0.5s;
+  transition: top ease-out 0.5s;
   outline: none;
 }
 
@@ -41,15 +44,16 @@ html {
 .active {
   background-color: white;
 
-  -webkit-transition: max-height 1000ms cubic-bezier(0.470, 0.000, 0.745, 0.715);
-  -moz-transition: max-height 1000ms cubic-bezier(0.470, 0.000, 0.745, 0.715);
-  -o-transition: max-height 1000ms cubic-bezier(0.470, 0.000, 0.745, 0.715);
-  transition: max-height 1000ms cubic-bezier(0.470, 0.000, 0.745, 0.715); /* easeInSine */
+  -webkit-transition: max-height 1000ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -moz-transition: max-height 1000ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -o-transition: max-height 1000ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  transition: max-height 1000ms cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
 
 }
 
 .layer-content header {
   padding: 0 3rem 2rem 3rem;
+
   -webkit-transition: background-color .5s cubic-bezier(0.470, 0.000, 0.745, 0.715);
   -moz-transition: background-color .5s cubic-bezier(0.470, 0.000, 0.745, 0.715);
   -o-transition: background-color .5s cubic-bezier(0.470, 0.000, 0.745, 0.715);
