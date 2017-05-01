@@ -45,9 +45,10 @@
 
   var temp       = null;
   var inProgress = false;
-
   function openSlide(e){
-    if(inProgress)return;
+    if(inProgress === true || inProgress === undefined){
+      return;
+    }
     inProgress    = true;
     var currentEl = this.parentNode.parentNode;
     var parent    = this.parentNode.parentNode.parentNode;
@@ -89,28 +90,25 @@
     else{
       currentEl.style.top = lastChild.offsetTop + 'px';
       lastChild.style.top = currentEl.offsetTop + 'px';
+
       addClass(lastChild, 'top-layer');
       addClass(content, 'active');
       removeClass(content.parentNode, 'visited');
       hide(done, 0);
+
       var aDiv = document.getElementsByClassName('active')[0];
       aDiv.style.transitionDuration  = '2.5s';
+
       setTimeout(function(){
         content.style.maxHeight = maxHeight + 'px';
         inProgress              = false;
+
       }, 750);
     }
     setTimeout(function(){
       removeClass(currentEl, 'on-top');
     }, 2000);
     temp = currentEl;
-  }
-
-  var didScroll = false;
-
-  window.onscroll = moveEl;
-  function moveEl(){
-    didScroll = true;
   }
 
   /********* helper ***********/

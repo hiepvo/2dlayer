@@ -1,6 +1,7 @@
 html {
   font-family: 'Roboto', Arial;
   font-size: 62.5%;
+  box-sizing: border-box;
 }
 
 *, *::after, *::before {
